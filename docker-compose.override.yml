@@ -1,0 +1,127 @@
+version: '3.4'
+
+services:
+    customerdb:
+        container_name: customerdb
+        restart: always
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: customerdb
+        ports:
+            - 54001:5432
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+            - customer_postgres_data:/var/lib/postgresql/data/
+        shm_size: '2gb'
+
+    vehicledb:
+        container_name: vehicledb
+        restart: always
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: vehicledb
+        ports:
+            - 54002:5432
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+            - vehicle_postgres_data:/var/lib/postgresql/data/
+        shm_size: '2gb'
+
+    trackingdb:
+        container_name: trackingdb
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+            - mongo_data:/data/db
+        ports:
+            - "27017:27017"
+
+    rabbitmq:
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+    vehicleapi:
+        container_name: vehicleapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:DefaultConnection=Server=vehicledb;Database=vehicledb;User Id=postgres;Password=postgres"
+            - "EventBus:HostName=rabbitmq"
+        depends_on:
+            - vehicledb
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "8000:80"
+    customerapi:
+        container_name: customerapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:DefaultConnection=Server=customerdb;Database=customerdb;User Id=postgres;Password=postgres"
+            - "EventBus:HostName=rabbitmq"
+        depends_on:
+            - customerdb
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "8001:80"
+    trackingapi:
+        container_name: trackingapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "MongoDbSettings:ConnectionString=mongodb://trackingdb"
+            - "EventBus:HostName=rabbitmq"
+        depends_on:
+            - trackingdb
+            - rabbitmq
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "8002:80"
+    gatewayapi:
+        container_name: gatewayapi
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+        depends_on:
+            - vehicleapi
+            - customerapi
+            - trackingapi
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/            
+            - ./ApiGateway/appsettings.Docker.json:/app/appsettings.json
+        ports:
+            - "8003:80" 
+    
+    vehicletrackingui:
+        container_name: vehicletrackingui
+        depends_on:
+            - gatewayapi
+        ports:
+            - "4209:4200"
+        volumes:
+            - "./:/usr/share/nginx/html"
+    pingsimulator:
+        container_name: pingsimulator
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "RemoteHosts:VehicleAPI=http://vehicleapi"
+            - "RemoteHosts:TrackingAPI=http://trackingapi"
+
+        depends_on:
+            - vehicleapi
+            - customerapi
+            - trackingapi

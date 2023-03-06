@@ -1,0 +1,122 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{79AF4076-1EDE-4D14-8E88-AD98E24CA84B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5F4A7A63-B540-4750-B0DD-A9C9105BD35F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleAPI", "Services\Vehicle.API\VehicleAPI.csproj", "{73E8315A-6E2A-447D-A32A-536091A2829D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7313297F-12B4-471F-8E7D-6721CCD208BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{0EA470C7-FA1C-430A-94DB-33ED8B4489EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAPI", "Services\Customer.API\CustomerAPI.csproj", "{C00715EB-0D7D-4610-B27C-0489937F5494}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrackingAPI", "Services\TrackingAPI\TrackingAPI.csproj", "{8214950B-E26B-4A8A-869B-A7FDB0EF8676}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "Common\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehiclePing.SimulatorWorkerService", "VehiclePing.SimulatorWorkerService\VehiclePing.SimulatorWorkerService.csproj", "{398B91EF-3BF5-4D24-AFE8-0D23A0913589}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{7BF79B66-1C63-42CD-B64C-8A588629CFA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A1DDA0A7-4569-482C-B36A-748DABA7F641}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleAPI.Test", "Tests\VehicleAPI.Test\VehicleAPI.Test.csproj", "{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0FA28936-915B-4DEB-8CF1-0D5C36217680}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VehicleTracking-UI", "VehicleTracking-UI\", "{BF8301C6-5B84-4250-A7CA-54180E8C5621}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58056"
+		Debug.AspNetCompiler.PhysicalPath = "VehicleTracking-UI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58056\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58056"
+		Release.AspNetCompiler.PhysicalPath = "VehicleTracking-UI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58056\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58056"
+		SlnRelativePath = "VehicleTracking-UI\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D332675F-311E-4CBC-B478-53FB38525A2A}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitignore = .gitignore
+		docker-compose.dcproj = docker-compose.dcproj
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79AF4076-1EDE-4D14-8E88-AD98E24CA84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79AF4076-1EDE-4D14-8E88-AD98E24CA84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79AF4076-1EDE-4D14-8E88-AD98E24CA84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79AF4076-1EDE-4D14-8E88-AD98E24CA84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73E8315A-6E2A-447D-A32A-536091A2829D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E8315A-6E2A-447D-A32A-536091A2829D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E8315A-6E2A-447D-A32A-536091A2829D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E8315A-6E2A-447D-A32A-536091A2829D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA470C7-FA1C-430A-94DB-33ED8B4489EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA470C7-FA1C-430A-94DB-33ED8B4489EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA470C7-FA1C-430A-94DB-33ED8B4489EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA470C7-FA1C-430A-94DB-33ED8B4489EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00715EB-0D7D-4610-B27C-0489937F5494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00715EB-0D7D-4610-B27C-0489937F5494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00715EB-0D7D-4610-B27C-0489937F5494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00715EB-0D7D-4610-B27C-0489937F5494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8214950B-E26B-4A8A-869B-A7FDB0EF8676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8214950B-E26B-4A8A-869B-A7FDB0EF8676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8214950B-E26B-4A8A-869B-A7FDB0EF8676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8214950B-E26B-4A8A-869B-A7FDB0EF8676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398B91EF-3BF5-4D24-AFE8-0D23A0913589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398B91EF-3BF5-4D24-AFE8-0D23A0913589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398B91EF-3BF5-4D24-AFE8-0D23A0913589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398B91EF-3BF5-4D24-AFE8-0D23A0913589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{73E8315A-6E2A-447D-A32A-536091A2829D} = {5F4A7A63-B540-4750-B0DD-A9C9105BD35F}
+		{0EA470C7-FA1C-430A-94DB-33ED8B4489EB} = {7313297F-12B4-471F-8E7D-6721CCD208BD}
+		{C00715EB-0D7D-4610-B27C-0489937F5494} = {5F4A7A63-B540-4750-B0DD-A9C9105BD35F}
+		{8214950B-E26B-4A8A-869B-A7FDB0EF8676} = {5F4A7A63-B540-4750-B0DD-A9C9105BD35F}
+		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75} = {7313297F-12B4-471F-8E7D-6721CCD208BD}
+		{398B91EF-3BF5-4D24-AFE8-0D23A0913589} = {7BF79B66-1C63-42CD-B64C-8A588629CFA0}
+		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11} = {A1DDA0A7-4569-482C-B36A-748DABA7F641}
+		{BF8301C6-5B84-4250-A7CA-54180E8C5621} = {0FA28936-915B-4DEB-8CF1-0D5C36217680}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE11A7B2-9497-4194-B9FA-F96524FFCCFF}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,75 @@
+<h2>Vehicle List</h2>
+<form #f="ngForm" style="  width:100% !important">
+  <mat-form-field appearance="fill" style="margin-right:1rem; width:50%">
+    <mat-label>Customers</mat-label>
+    <mat-select #matRef multiple [(ngModel)]="filter.customer" name="customer">
+      <mat-option *ngFor="let customer of customerList" [value]="customer.id">{{customer.fullName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="margin-right:1rem;  ">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="filter.status" name="status">
+      <mat-option *ngFor="let vehicleStatus  of vehicleStatusList" [value]="vehicleStatus.id">{{vehicleStatus.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div style="float:right">
+    <button (click)="search()" [disabled]="!f?.valid" mat-mini-fab color="primary">
+      <mat-icon>search</mat-icon>
+    </button>&nbsp;
+    <button (click)="clear()" [disabled]="!f?.valid" mat-mini-fab color="warn">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+
+</form>
+<div *ngIf="flightList.length > 0">
+
+  <div *ngIf="feedback.length" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
+
+  <table mat-table #table [dataSource]="flightList.length > 0   ? flightList : emptyData" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="vin">
+      <mat-header-cell *matHeaderCellDef> VIN </mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.vin}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="customerName">
+      <mat-header-cell *matHeaderCellDef> Customer Name </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{item.customerName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="vehicleStatusId">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <mat-icon *ngIf="item.vehicleStatusId  !== 1" style="-webkit-text-fill-color:red">circle_filled</mat-icon>
+        <mat-icon *ngIf="item.vehicleStatusId  === 1" style="-webkit-text-fill-color:green">circle_filled</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastPing">
+      <mat-header-cell *matHeaderCellDef> Last Ping Date </mat-header-cell>
+      <mat-cell *matCellDef="let item">{{item.lastPing | date }} {{item.lastPing | date:'shortTime'}}
+      </mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <a [routerLink]="['../flights', item.id ]" mat-raised-button color="primary">Details</a>
+      </mat-cell>
+    </ng-container> -->
+    <ng-container matColumnDef="empty-row">
+      <mat-cell *matCellDef="let element">No Data</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: flightList.length > 0  ? displayedColumns : ['empty-row'];"></mat-row>
+
+  </table>
+
+  <p *ngIf="flightList.length === 0">No Result</p>
+  <mat-paginator (page)="handlePageEvent($event)" [length]="totalItemCount" [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+</div>
