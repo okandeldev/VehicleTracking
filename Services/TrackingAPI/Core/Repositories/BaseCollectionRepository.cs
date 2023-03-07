@@ -3,11 +3,11 @@ using TrackingAPI.Models.Base;
 
 namespace TrackingAPI.Data
 {
-    public class GenericRepository<T> : IRepository<T> where T : IEntity
+    public class BaseCollectionRepository<T> : ICollectionRepository<T> where T : IEntity
     {
         private readonly IMongoDataContext _context;
         private readonly IMongoCollection<T> _collection;
-        public GenericRepository(IMongoDataContext context)
+        public BaseCollectionRepository(IMongoDataContext context)
         {
             _context = context;
             _collection = _context.GetCollection<T>(typeof(T).Name);

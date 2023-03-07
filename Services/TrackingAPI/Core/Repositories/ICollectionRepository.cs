@@ -1,6 +1,6 @@
 ﻿ namespace TrackingAPI.Data
 {
-    public interface IRepository<T> where T : class
+    public interface ICollectionRepository<T> where T : class
     {
         Task<T> GetAsync(string id);
         Task<IEnumerable<T>> GetAllAsync();

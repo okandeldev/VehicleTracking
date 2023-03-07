@@ -1,6 +1,5 @@
 ﻿
 using System.Linq.Expressions;
-using X.PagedList;
 
 namespace Core.Repositories
 {

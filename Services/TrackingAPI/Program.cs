@@ -26,7 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(ICollectionRepository<>), typeof(BaseCollectionRepository<>));
 builder.Services.AddScoped(typeof(IVehicleHistoryStatusService), typeof(VehicleHistoryStatusService));
 builder.Services.AddScoped(typeof(IVehiclePingHistoryRepository), typeof(VehiclePingHistoryRepository));
 

@@ -2,7 +2,7 @@
 
 namespace TrackingAPI.Data.Repositories 
 {
-    public interface IVehiclePingHistoryRepository : IRepository<VehiclePing>
+    public interface IVehiclePingHistoryRepository : ICollectionRepository<VehiclePing>
     {
 
     }
