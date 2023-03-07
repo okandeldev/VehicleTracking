@@ -22,7 +22,7 @@ export class VehicleStatusService {
   }
 
   find(): Observable<VehicleStatus[]> {
-    const url = `${environment.baseUrl}/gateway/VehicleStatuses`;
+    const url = `${environment.baseUrl}/VehicleStatuses`;
     const headers = new HttpHeaders().set('Accept', 'application/json');
 
     const params = {};

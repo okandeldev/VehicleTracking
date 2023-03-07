@@ -31,11 +31,10 @@ namespace VehiclePing.SimulatorWorkerService.BackgroundServices
 
         protected override async Task ExecuteAsync(CancellationToken cancellationToken)
         { 
-            string VehicleAPI = _configuration.GetValue<string>("RemoteHosts:VehicleAPI");
-            string TrackingAPI = _configuration.GetValue<string>("RemoteHosts:TrackingAPI");
+            string apiBaseUrl = _configuration.GetValue<string>("RemoteHosts:APIBaseUrl"); 
 
-            string VehicleListAPI = $"{VehicleAPI}/api/Vehicles?PageSize=50";
-            string VehiclePingAPI = $"{TrackingAPI}/api/VehiclePing";
+            string VehicleListAPI = $"{apiBaseUrl}/Vehicles?PageSize=50";
+            string VehiclePingAPI = $"{apiBaseUrl}/VehiclePing";
 
             using PeriodicTimer timer = new PeriodicTimer(_period);
 

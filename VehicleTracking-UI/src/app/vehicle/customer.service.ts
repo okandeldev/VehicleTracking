@@ -29,7 +29,7 @@ export class CustomerService {
     pageSize: any,
     pageNumber: any
   ): Observable<Customer[]> {
-    const url = `${environment.baseUrl}/gateway/Customers`;
+    const url = `${environment.baseUrl}/Customers`;
     const headers = new HttpHeaders().set('Accept', 'application/json');
 
     const params = {

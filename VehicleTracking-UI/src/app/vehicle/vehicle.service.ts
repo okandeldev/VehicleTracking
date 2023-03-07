@@ -36,7 +36,7 @@ export class FlightService {
     pageSize: any,
     pageNumber: any
   ): Observable<Vehicle[]> {
-    const url = `${environment.baseUrl}/gateway/Vehicles`;
+    const url = `${environment.baseUrl}/Vehicles`;
     const headers = new HttpHeaders().set('Accept', 'application/json');
 
     const params = {

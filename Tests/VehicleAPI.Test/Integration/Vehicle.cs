@@ -20,8 +20,8 @@ namespace VehicleAPI.Test.Integration
         [Fact]
         public async Task Test_GetVehiclesQueryReuqest()
         { 
-            string VehicleAPI = _configuration.GetValue<string>("RemoteHosts:VehicleAPI");
-            var response = await _httpClient.GetAsync($"{VehicleAPI}/api/Vehicles");
+            string apiBaseUrl = _configuration.GetValue<string>("RemoteHosts:APIBaseUrl");
+            var response = await _httpClient.GetAsync($"{apiBaseUrl}/Vehicles");
             var result = await response.Content.ReadAsStringAsync();
             Assert.True(!string.IsNullOrEmpty(result));
         }
