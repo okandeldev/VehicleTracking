@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace TrackingAPI.Models.Base
+namespace TrackingAPI.Models.Entities
 {
     public class IEntity
     {

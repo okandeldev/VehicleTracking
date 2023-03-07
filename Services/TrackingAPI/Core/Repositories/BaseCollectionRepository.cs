@@ -1,7 +1,7 @@
 ﻿using MongoDB.Driver;
-using TrackingAPI.Models.Base;
+using TrackingAPI.Models.Entities;
 
-namespace TrackingAPI.Data
+namespace TrackingAPI.Core.Repositories
 {
     public class BaseCollectionRepository<T> : ICollectionRepository<T> where T : IEntity
     {

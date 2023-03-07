@@ -1,4 +1,4 @@
-﻿namespace TrackingAPI.Exceptions
+﻿namespace Core.Exceptions
 {
     public class ClientSideException : Exception
     {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using TrackingAPI.Core.Repositories;
 using TrackingAPI.Models.Settings;
 
 namespace TrackingAPI.Data

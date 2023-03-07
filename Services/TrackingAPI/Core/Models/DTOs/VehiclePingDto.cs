@@ -1,9 +1,9 @@
 ﻿
 using Core.Enum;
 
-namespace TrackingAPI.Models.Response 
+namespace TrackingAPI.Models.DTOs
 {
-    public class ResponseVehicleHistoryStatus  
+    public class VehiclePingDto  
     {
         public string VehicleId { get; set; }
         public VehicleStatusEnum VehicleStatus { get; set; }

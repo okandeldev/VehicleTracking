@@ -17,10 +17,10 @@ namespace VehicleAPI.Application.CommandHandlers
         {
             Guid VehicleId = Guid.Empty;
             Guid.TryParse(request.ping.VehicleId, out VehicleId);
-                using (var scope = _serviceScopeFactory.CreateScope())
-                {
+            using (var scope = _serviceScopeFactory.CreateScope())
+            {
                 var scopedServices = scope.ServiceProvider;
-                var _vehiclesRepository = scopedServices.GetRequiredService<IVehiclesRepository>(); 
+                var _vehiclesRepository = scopedServices.GetRequiredService<IVehiclesRepository>();
 
                 var _vehicle = await _vehiclesRepository.GetByIdAsync(VehicleId);
                 if (_vehicle != null)
@@ -28,9 +28,9 @@ namespace VehicleAPI.Application.CommandHandlers
                     _vehicle.VehicleStatusId = (short)request.ping.VehicleStatus;
                     _vehicle.LastPing = DateTime.Now;
                     await _vehiclesRepository.UpdateAsync(_vehicle);
-                } 
+                }
                 return _vehicle;
-            } 
+            }
         }
     }
 }

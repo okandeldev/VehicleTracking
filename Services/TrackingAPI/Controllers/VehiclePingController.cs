@@ -12,11 +12,11 @@ namespace TrackingAPI.Controllers
     [ApiController]
     public class VehiclePingController : ControllerBase
     {
-        private readonly IVehicleHistoryStatusService _service;
+        private readonly IVehiclePingService _service;
         private readonly IMapper _mapper;
         private readonly EventBusRabbitMQProducer _eventBus;
 
-        public VehiclePingController(IMapper mapper, IVehicleHistoryStatusService service, EventBusRabbitMQProducer eventBus)
+        public VehiclePingController(IMapper mapper, IVehiclePingService service, EventBusRabbitMQProducer eventBus)
         {
             _service = service;
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -26,14 +26,19 @@ namespace TrackingAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _service.GetByIdAsync(id));
+            var vehiclePing = await _service.GetByIdAsync(id);
+            if (vehiclePing == null)
+            {
+                return NotFound();
+            }
+            return Ok(vehiclePing);
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _service.GetAllAsync());
         }
-         
+
 
         [HttpPost]
         public async Task<IActionResult> Ping(RequestVehiclePing request)

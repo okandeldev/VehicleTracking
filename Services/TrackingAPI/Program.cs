@@ -1,10 +1,12 @@
-global using Core.Shared; 
+global using Core.Shared;
+using Core.Middlewares;
 using EventBusRabbitMQ;
 using EventBusRabbitMQ.Producer;
 using MediatR;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using System.Reflection;
+using TrackingAPI.Core.Repositories;
 using TrackingAPI.Data;
 using TrackingAPI.Data.Repositories;
 using TrackingAPI.Models.Settings;
@@ -27,8 +29,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped(typeof(ICollectionRepository<>), typeof(BaseCollectionRepository<>));
-builder.Services.AddScoped(typeof(IVehicleHistoryStatusService), typeof(VehicleHistoryStatusService));
-builder.Services.AddScoped(typeof(IVehiclePingHistoryRepository), typeof(VehiclePingHistoryRepository));
+builder.Services.AddScoped(typeof(IVehiclePingService), typeof(VehiclePingService));
+builder.Services.AddScoped(typeof(IVehiclePingRepository), typeof(VehiclePingHistoryRepository));
 
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddSingleton<IMongoDbSettings>(serviceProvider =>
@@ -68,6 +70,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();

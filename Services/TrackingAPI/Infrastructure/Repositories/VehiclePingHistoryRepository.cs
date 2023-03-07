@@ -1,8 +1,9 @@
-﻿using TrackingAPI.Models.Entities;
+﻿using TrackingAPI.Core.Repositories;
+using TrackingAPI.Models.Entities;
 
 namespace TrackingAPI.Data.Repositories 
 {
-    public class VehiclePingHistoryRepository : BaseCollectionRepository<VehiclePing>, IVehiclePingHistoryRepository
+    public class VehiclePingHistoryRepository : BaseCollectionRepository<VehiclePing>, IVehiclePingRepository
     {
         public VehiclePingHistoryRepository(IMongoDataContext context) : base(context)
         {

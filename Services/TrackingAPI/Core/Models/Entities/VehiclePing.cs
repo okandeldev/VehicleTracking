@@ -1,5 +1,4 @@
-﻿using Core.Enum; 
-using TrackingAPI.Models.Base; 
+﻿using Core.Enum;   
 
 namespace TrackingAPI.Models.Entities
 {

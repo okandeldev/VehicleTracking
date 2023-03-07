@@ -1,6 +1,4 @@
-﻿
-
-using Core.Enum;
+﻿using Core.Enum;
 
 namespace TrackingAPI.Models.Request 
 {

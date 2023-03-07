@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using TrackingAPI.Exceptions;
-using TrackingAPI.Models.Base;
-using System.Text.Json;
+﻿using System.Text.Json;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Core.Exceptions;
+using Core.Shared;
 
-
-namespace TrackingAPI.Middlewares
+namespace Core.Middlewares
 {
     public class ExceptionHandlerMiddleware
     {
@@ -38,10 +38,13 @@ namespace TrackingAPI.Middlewares
 
                 httpContext.Response.StatusCode = statusCode;
 
-                var response = Response<NoContext>.Fail(ex.Message, statusCode);
+                var response = ErrorResponse<NoContext>.Fail(ex.Message, statusCode);
 
                 await httpContext.Response.WriteAsync(JsonSerializer.Serialize(response));
             }
         }
+    }
+    public class NoContext
+    {
     }
 }

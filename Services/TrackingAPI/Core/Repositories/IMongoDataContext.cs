@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace TrackingAPI.Data
+namespace TrackingAPI.Core.Repositories
 {
     public interface IMongoDataContext
     {

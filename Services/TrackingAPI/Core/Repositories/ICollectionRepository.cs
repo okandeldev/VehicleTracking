@@ -1,4 +1,4 @@
-﻿ namespace TrackingAPI.Data
+﻿namespace TrackingAPI.Core.Repositories
 {
     public interface ICollectionRepository<T> where T : class
     {
