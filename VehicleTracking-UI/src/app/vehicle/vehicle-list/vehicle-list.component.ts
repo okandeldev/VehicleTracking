@@ -1,16 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { FlightFilter } from '../vehicle-filter';
-import { FlightService } from '../vehicle.service';
-import { CustomerService } from '../customer.service';
-import { VehicleStatusService } from '../vehicleStatus.service';
-import { Vehicle } from '../vehicle';
-import { Customer } from '../customer';
-import { NumberInput } from '@angular/cdk/coercion';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { tap } from 'rxjs';
-
+import { VehicleFilter } from '../models/vehicle-filter';
+import { VehicleService } from '../services/vehicle.service';
+import { CustomerService } from '../services/customer.service';
+import { VehicleStatusService } from '../services/vehicleStatus.service';
+import { Vehicle } from '../models/vehicle';
+import { Customer } from '../models/customer';
+import { PageEvent } from '@angular/material/paginator';
 import { FormControl } from '@angular/forms';
-import { VehicleStatus } from './../vehicleStatus';
+import { VehicleStatus } from './../models/vehicleStatus';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,12 +17,9 @@ import { SignalrNotificationService } from 'src/app/services/signalr.notificatio
   templateUrl: 'vehicle-list.component.html',
   styles: [],
 })
-export class FlightListComponent implements OnInit {
+export class VehicleListComponent implements OnInit {
+  defaultPageSize = 10;
   emptyData = new MatTableDataSource([{}]);
-
-  //@ViewChild(MatPaginator) paginator: MatPaginator! = null;
-  pageSize: any = 10;
-  pageNumber: Number = 1;
   totalItemCount: any = 0;
   displayedColumns = [
     'id',
@@ -35,26 +29,34 @@ export class FlightListComponent implements OnInit {
     'lastPing',
     //'actions',
   ];
-  filter = new FlightFilter();
-  selectedFlight!: Vehicle;
+  filter = new VehicleFilter();
+  selectedVehicle!: Vehicle;
   feedback: any = {};
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     public signalRNotificationService: SignalrNotificationService,
-    private flightService: FlightService,
+    public vehicleService: VehicleService,
     private customerService: CustomerService,
     private vehicleStatusService: VehicleStatusService
-  ) {}
-  handlePageEvent(event: PageEvent) {
-    this.totalItemCount = event.length;
-    this.pageSize = event.pageSize;
-    this.pageNumber = +event.pageIndex + 1;
-    this.flightService.load(this.filter, this.pageSize, this.pageNumber);
+  ) {
+    this.vehicleService.pageInformation = {
+      filter: new VehicleFilter(),
+      pageSize: this.defaultPageSize,
+      pageNumber: 1,
+    };
   }
-  get flightList(): Vehicle[] {
-    this.totalItemCount = this.flightService.totalItemCount;
-    return this.flightService.flightList;
+  handlePageEvent(event: PageEvent) {
+    this.vehicleService.pageInformation = {
+      ...this.vehicleService.pageInformation,
+      pageSize: event.pageSize,
+      pageNumber: +event.pageIndex + 1,
+    };
+    this.vehicleService.Search();
+  }
+  get vehicleList(): Vehicle[] {
+    this.totalItemCount = this.vehicleService.totalItemCount;
+    return this.vehicleService.vehicleList;
   }
 
   get customerList(): Customer[] {
@@ -70,39 +72,35 @@ export class FlightListComponent implements OnInit {
     await this.signalRNotificationService.startConnection();
     this.signalRNotificationService.addTransferNotificationsDataListener(
       (data: any) => {
-        this.flightService.load(this.filter, this.pageSize, this.pageNumber);
-        // this.flightService.flightList = this.flightService.flightList.map(
-        //   (x) => {
-        //     if (x.id === data.vehicleId) {
-        //       return {
-        //         ...x,
-        //         lastPing: data.date,
-        //         vehicleStatusId: data.vehicleStatus,
-        //       };
-        //     }
-        //     return x;
-        //   }
-        // );
+        this.vehicleService.vehiclePingHandler(data);
         this.changeDetector.detectChanges();
       }
     );
-    this.customerService.load(this.filter, this.pageSize, this.pageNumber);
+    this.customerService.load(this.filter, 999, 1);
     this.vehicleStatusService.load();
-    this.search();
   }
 
   search(): void {
-    this.flightService.load(this.filter, this.pageSize, this.pageNumber);
+    this.vehicleService.pageInformation = {
+      ...this.vehicleService.pageInformation,
+      filter: this.filter,
+    };
+    this.vehicleService.Search();
   }
   clear(): void {
     this.matRef.options.forEach((data: MatOption) => data.deselect());
-    this.pageNumber = 1;
-    this.pageSize = 10;
+
     this.filter.customer = [];
     this.filter.status = '';
-    this.flightService.load(this.filter, this.pageSize, this.pageNumber);
+    this.vehicleService.pageInformation = {
+      ...this.vehicleService.pageInformation,
+      filter: this.filter,
+      pageSize: this.defaultPageSize,
+      pageNumber: 1,
+    };
+    this.vehicleService.Search();
   }
   select(selected: Vehicle): void {
-    this.selectedFlight = selected;
+    this.selectedVehicle = selected;
   }
 }

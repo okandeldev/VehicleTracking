@@ -8,17 +8,11 @@ import { environment } from '../../environments/environment';
 })
 export class SignalrNotificationService {
   public notifications: NotificationDTO[] = [];
-  constructor() {
-    // this.notifications =
-    //   JSON.parse(localStorage.getItem('Notifications')) || [];
-  }
+  constructor() {}
   private hubConnection: signalR.HubConnection;
   public startConnection = async () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(environment.services.socketEndpoints.notifications, {
-        // transport: signalR.HttpTransportType.LongPolling,
-        // accessTokenFactory: () => token,
-      })
+      .withUrl(environment.services.socketEndpoints.notifications, {})
       .withAutomaticReconnect()
       .configureLogging(signalR.LogLevel.Debug)
       .build();

@@ -6,9 +6,7 @@ IHost host = Host.CreateDefaultBuilder(args)
     {
         //services.AddSingleton<VehiclePingBackgroundService>();
         services.AddHttpClient<VehiclePingBackgroundService>();
-        services.AddHostedService<VehiclePingBackgroundService>();
-
-
+        services.AddHostedService<VehiclePingBackgroundService>(); 
     })
     .Build();
 

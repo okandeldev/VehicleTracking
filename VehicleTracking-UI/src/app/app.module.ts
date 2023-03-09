@@ -16,7 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { FlightModule } from './vehicle/vehicle.module';
+import { VehicleModule } from './vehicle/vehicle.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSortModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    FlightModule,
+    VehicleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

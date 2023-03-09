@@ -23,11 +23,11 @@
   </div>
 
 </form>
-<div *ngIf="flightList.length > 0">
+<div *ngIf="vehicleList.length > 0">
 
   <div *ngIf="feedback.length" class="alert alert-{{feedback.type}}">{{ feedback.message }}</div>
 
-  <table mat-table #table [dataSource]="flightList.length > 0   ? flightList : emptyData" class="mat-elevation-z8">
+  <table mat-table #table [dataSource]="vehicleList.length > 0   ? vehicleList : emptyData" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
       <mat-cell *matCellDef="let item">{{item.id}}</mat-cell>
@@ -43,8 +43,9 @@
     <ng-container matColumnDef="vehicleStatusId">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <mat-icon *ngIf="item.vehicleStatusId  !== 1" style="-webkit-text-fill-color:red">circle_filled</mat-icon>
-        <mat-icon *ngIf="item.vehicleStatusId  === 1" style="-webkit-text-fill-color:green">circle_filled</mat-icon>
+        <mat-icon *ngIf="item.vehicleStatusId  !== '1'" style="-webkit-text-fill-color:red">circle_filled</mat-icon>
+        <mat-icon *ngIf="item.vehicleStatusId  === '1'" style="-webkit-text-fill-color:green">circle_filled</mat-icon>
+
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastPing">
@@ -55,7 +56,7 @@
     <!-- <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <a [routerLink]="['../flights', item.id ]" mat-raised-button color="primary">Details</a>
+        <a [routerLink]="['../vehicles', item.id ]" mat-raised-button color="primary">Details</a>
       </mat-cell>
     </ng-container> -->
     <ng-container matColumnDef="empty-row">
@@ -64,12 +65,12 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-    <mat-row *matRowDef="let row; columns: flightList.length > 0  ? displayedColumns : ['empty-row'];"></mat-row>
+    <mat-row *matRowDef="let row; columns: vehicleList.length > 0  ? displayedColumns : ['empty-row'];"></mat-row>
 
   </table>
 
-  <p *ngIf="flightList.length === 0">No Result</p>
-  <mat-paginator (page)="handlePageEvent($event)" [length]="totalItemCount" [pageSize]="pageSize"
+  <p *ngIf="vehicleList.length === 0">No Result</p>
+  <mat-paginator (page)="handlePageEvent($event)" [length]="totalItemCount" [pageSize]="defaultPageSize"
     [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
   </mat-paginator>
 </div>

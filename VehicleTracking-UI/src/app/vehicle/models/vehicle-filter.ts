@@ -1,4 +1,4 @@
-export class FlightFilter {
+export class VehicleFilter {
   customer: string[] = [];
   status = '';
 }

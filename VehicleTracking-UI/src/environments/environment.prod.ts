@@ -6,4 +6,5 @@ export const environment = {
       notifications: 'http://vehicleapi/notifications',
     },
   },
+  VehicleIsDisconnectedMins: 1,
 };

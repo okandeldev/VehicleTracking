@@ -1,9 +1,9 @@
-import { Customer } from './customer';
-import { FlightFilter } from './vehicle-filter';
+import { Customer } from '../models/customer';
+import { VehicleFilter } from '../models/vehicle-filter';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CustomerService {
@@ -12,7 +12,7 @@ export class CustomerService {
 
   constructor(private http: HttpClient) {}
 
-  load(filter: FlightFilter, pageSize: Number, pageNumber: Number = 1): void {
+  load(filter: VehicleFilter, pageSize: Number, pageNumber: Number = 1): void {
     this.find(filter, pageSize, pageNumber).subscribe(
       (result: any) => {
         this.totalItemCount = result.pageInformation?.totalItemCount;
@@ -25,7 +25,7 @@ export class CustomerService {
   }
 
   find(
-    filter: FlightFilter,
+    filter: VehicleFilter,
     pageSize: any,
     pageNumber: any
   ): Observable<Customer[]> {

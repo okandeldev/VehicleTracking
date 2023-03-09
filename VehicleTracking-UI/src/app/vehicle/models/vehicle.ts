@@ -3,6 +3,7 @@ export class Vehicle {
   vin!: string;
   regNr!: string;
   customerName!: string;
+  customerId!: string;
   vehicleStatusId!: string;
   lastPing!: Date;
 }

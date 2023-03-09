@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FlightListComponent } from './vehicle-list/vehicle-list.component';
-import { FlightEditComponent } from './vehicle-edit/vehicle-edit.component';
-import { FlightService } from './vehicle.service';
-import { CustomerService } from './customer.service';
-import { VehicleStatusService } from './vehicleStatus.service';
-import { FLIGHT_ROUTES } from './vehicle.routes';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
+import { VehicleService } from './services/vehicle.service';
+import { CustomerService } from './services/customer.service';
+import { VehicleStatusService } from './services/vehicleStatus.service';
+import { VEHICLE_ROUTES } from './vehicle.routes';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(FLIGHT_ROUTES),
+    RouterModule.forChild(VEHICLE_ROUTES),
     MatButtonModule,
     MatIconModule,
     MatTableModule,
@@ -33,8 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSelectModule,
   ],
-  declarations: [FlightListComponent, FlightEditComponent],
-  providers: [FlightService, CustomerService, VehicleStatusService],
-  exports: [FlightListComponent],
+  declarations: [VehicleListComponent],
+  providers: [VehicleService, CustomerService, VehicleStatusService],
+  exports: [VehicleListComponent],
 })
-export class FlightModule {}
+export class VehicleModule {}

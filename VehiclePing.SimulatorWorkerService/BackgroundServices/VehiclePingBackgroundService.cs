@@ -17,7 +17,7 @@ namespace VehiclePing.SimulatorWorkerService.BackgroundServices
 
     public class VehiclePingBackgroundService : BackgroundService
     {
-        private readonly TimeSpan _period = TimeSpan.FromSeconds(60);
+        private readonly TimeSpan _period = TimeSpan.FromSeconds(20);
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
         private readonly ILogger<VehiclePingBackgroundService> _logger;

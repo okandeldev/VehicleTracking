@@ -6,4 +6,5 @@ export const environment = {
       notifications: 'http://localhost:5080/notifications',
     },
   },
+  VehicleIsDisconnectedMins: 1,
 };

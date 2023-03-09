@@ -2,20 +2,20 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FlightListComponent } from './vehicle-list.component';
-import { FlightService } from '../vehicle.service';
+import { VehicleListComponent } from './vehicle-list.component';
+import { VehicleService } from '../services/vehicle.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 
-describe('FlightListComponent', () => {
-  let component: FlightListComponent;
-  let fixture: ComponentFixture<FlightListComponent>;
+describe('VehicleListComponent', () => {
+  let component: VehicleListComponent;
+  let fixture: ComponentFixture<VehicleListComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [FlightListComponent],
+      declarations: [VehicleListComponent],
       imports: [
         FormsModule,
         HttpClientTestingModule,
@@ -25,12 +25,12 @@ describe('FlightListComponent', () => {
         MatIconModule,
         NoopAnimationsModule,
       ],
-      providers: [FlightService],
+      providers: [VehicleService],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlightListComponent);
+    fixture = TestBed.createComponent(VehicleListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
