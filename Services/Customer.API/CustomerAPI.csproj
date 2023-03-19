@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>CustomerAPI</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
 	</PropertyGroup>

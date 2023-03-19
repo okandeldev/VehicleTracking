@@ -27,38 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A1DDA0A7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleAPI.Test", "Tests\VehicleAPI.Test\VehicleAPI.Test.csproj", "{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0FA28936-915B-4DEB-8CF1-0D5C36217680}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VehicleTracking-UI", "VehicleTracking-UI\", "{BF8301C6-5B84-4250-A7CA-54180E8C5621}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58056"
-		Debug.AspNetCompiler.PhysicalPath = "VehicleTracking-UI\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58056\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58056"
-		Release.AspNetCompiler.PhysicalPath = "VehicleTracking-UI\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58056\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "58056"
-		SlnRelativePath = "VehicleTracking-UI\"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D332675F-311E-4CBC-B478-53FB38525A2A}"
 	ProjectSection(SolutionItems) = preProject
-		.dockerignore = .dockerignore
 		.gitignore = .gitignore
-		docker-compose.dcproj = docker-compose.dcproj
-		docker-compose.override.yml = docker-compose.override.yml
-		docker-compose.yml = docker-compose.yml
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E31AB60D-3A70-46E3-94C6-0DF901D33C04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,10 +73,10 @@ Global
 		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF8301C6-5B84-4250-A7CA-54180E8C5621}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{E31AB60D-3A70-46E3-94C6-0DF901D33C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31AB60D-3A70-46E3-94C6-0DF901D33C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31AB60D-3A70-46E3-94C6-0DF901D33C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31AB60D-3A70-46E3-94C6-0DF901D33C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,7 +89,6 @@ Global
 		{6EBCF428-60C2-4CBD-915A-AAEF25CD8D75} = {7313297F-12B4-471F-8E7D-6721CCD208BD}
 		{398B91EF-3BF5-4D24-AFE8-0D23A0913589} = {7BF79B66-1C63-42CD-B64C-8A588629CFA0}
 		{91BFDF50-9ACA-41E1-9AC2-E05CE6B4EE11} = {A1DDA0A7-4569-482C-B36A-748DABA7F641}
-		{BF8301C6-5B84-4250-A7CA-54180E8C5621} = {0FA28936-915B-4DEB-8CF1-0D5C36217680}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE11A7B2-9497-4194-B9FA-F96524FFCCFF}

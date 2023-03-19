@@ -1,48 +1,50 @@
 version: '3.4'
 
 services:
-    customerdb:
-        image: postgres
-    vehicledb:
-        image: postgres
-    trackingdb:
-        image: mongo 
-    rabbitmq:
-        image: rabbitmq:3-management-alpine
+  customerdb:
+    image: postgres
 
-    vehicleapi:
-        image: ${DOCKER_REGISTRY-}vehicleapi
-        build:
-            context: .
-            dockerfile: Services/Vehicle.API/Dockerfile
-    customerapi:
-        image: ${DOCKER_REGISTRY-}customerapi
-        build:
-            context: .
-            dockerfile: Services/Customer.API/Dockerfile
-    trackingapi:
-        image: ${DOCKER_REGISTRY-}trackingapi
-        build:
-            context: .
-            dockerfile: Services/TrackingAPI/Dockerfile
-    gatewayapi:
-        image: ${DOCKER_REGISTRY-}gatewayapi
-        build:
-            context: .
-            dockerfile: ApiGateway/Dockerfile
-    pingsimulator:
-        image: ${DOCKER_REGISTRY-}pingsimulator
-        build:
-            context: .
-            dockerfile: VehiclePing.SimulatorWorkerService/Dockerfile
+  vehicledb:
+    image: postgres
 
-    vehicletrackingui:
-        image: ${DOCKER_REGISTRY-}vehicletrackingui
-        build:
-            context: .
-            dockerfile: VehicleTracking-UI/Dockerfile
+  trackingdb:
+    image: mongo
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  customerapi:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: Services/Customer.API/Dockerfile
+
+  vehicleapi:
+    image: ${DOCKER_REGISTRY-}vehicleapi
+    build:
+      context: .
+      dockerfile: Services/Vehicle.API/Dockerfile
+
+  trackingapi:
+    image: ${DOCKER_REGISTRY-}trackingapi
+    build:
+      context: .
+      dockerfile: Services/TrackingAPI/Dockerfile
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+  pingsimulator:
+    image: ${DOCKER_REGISTRY-}pingsimulator
+    build:
+      context: .
+      dockerfile: VehiclePing.SimulatorWorkerService/Dockerfile
 
 volumes:
-    customer_postgres_data:
-    vehicle_postgres_data:
-    mongo_data:
+  customer_postgres_data:
+  vehicle_postgres_data:
+  mongo_data:
+networks:
+  my-network:

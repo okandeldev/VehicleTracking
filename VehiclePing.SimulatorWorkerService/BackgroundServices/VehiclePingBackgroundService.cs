@@ -38,6 +38,7 @@ namespace VehiclePing.SimulatorWorkerService.BackgroundServices
 
             using PeriodicTimer timer = new PeriodicTimer(_period);
 
+            Thread.Sleep(20000);
             using var vehicleshttpResponse = await this._httpClient.GetAsync(VehicleListAPI, cancellationToken);
             _logger.LogInformation(vehicleshttpResponse.Content.ToString());
 
@@ -50,7 +51,7 @@ namespace VehiclePing.SimulatorWorkerService.BackgroundServices
             {
 
                 try
-                {
+                { 
                     Random random = new Random();
 
                     int randomvValue = random.Next(0, vehicles.list.Count);
