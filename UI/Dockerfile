@@ -8,7 +8,8 @@ RUN npm install
 COPY . .
 RUN npm run build-docker
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 FROM nginx as runtime
 COPY --from=build /app/dist/vehicle-tracking-ui /usr/share/nginx/html
+
+# Start NgInx service
+# ENTRYPOINT ["./usr/share/nginx/html/start.sh", "$CONFIGURATION"]
