@@ -55,7 +55,7 @@ namespace VehicleAPI.Test.Application.Vehicle.Commands
             {
                 VehicleId = VehiclesSeed.Vehicles[0].Id.ToString(),
                 Message = "new message",
-                date = DateTime.Now, 
+                date = DateTime.UtcNow, 
             };
         }
 

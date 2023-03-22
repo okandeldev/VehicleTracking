@@ -38,7 +38,7 @@ namespace VehicleAPI.Migrations
                     customerid = table.Column<Guid>(name: "customer_id", type: "uuid", nullable: false),
                     customername = table.Column<string>(name: "customer_name", type: "text", nullable: false),
                     vehiclestatusid = table.Column<short>(name: "vehicle_status_id", type: "smallint", nullable: false),
-                    lastping = table.Column<DateTime>(name: "last_ping", type: "timestamp without time zone", nullable: true),
+                    lastping = table.Column<DateTime>(name: "last_ping", type: "timestamp with time zone", nullable: true),
                     createdby = table.Column<string>(name: "created_by", type: "text", nullable: true),
                     createdon = table.Column<DateTime>(name: "created_on", type: "timestamp with time zone", nullable: false),
                     updatedby = table.Column<string>(name: "updated_by", type: "text", nullable: true),

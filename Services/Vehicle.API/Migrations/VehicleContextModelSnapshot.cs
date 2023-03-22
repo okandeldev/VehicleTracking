@@ -54,7 +54,7 @@ namespace VehicleAPI.Migrations
 
                     b.Property<DateTime?>("LastPing")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp without time zone")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_ping");
 
                     b.Property<string>("RegNr")

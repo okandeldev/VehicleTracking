@@ -57,7 +57,7 @@ namespace VehiclePing.SimulatorWorkerService.BackgroundServices
                     int randomvValue = random.Next(0, vehicles.list.Count);
                     var vehicleId = vehicles.list[randomvValue].Id;
                     _logger.LogInformation("Vehicle Ping Started", vehicleId);
-                    var vehiclePing = new { vehicleId = vehicleId, vehicleStatus = 1, message = "test-" + DateTime.Now.ToString() };
+                    var vehiclePing = new { vehicleId = vehicleId, vehicleStatus = 1, message = "test-" + DateTime.UtcNow.ToString() };
                     string contents = JsonConvert.SerializeObject(vehiclePing);
                     var content = new StringContent(contents, Encoding.UTF8, "application/json");
 

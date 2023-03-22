@@ -12,7 +12,7 @@ namespace VehicleAPI.Application.DTOs
         public string CustomerName { get; set; } = String.Empty;
         public short VehicleStatusId { get; set; } = (short)VehicleStatusEnum.Disconnected;
         public VehicleStatus VehicleStatus { get; set; }
-        public DateTime? LastPing { get; set; }
+        public DateTimeOffset? LastPing { get; set; }
         public DateTime? CreatedOn { get; set; }
         public string? CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }

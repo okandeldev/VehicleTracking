@@ -8,6 +8,6 @@ namespace EventBusRabbitMQ.Events
         public VehicleStatusEnum VehicleStatus { get; set; } = VehicleStatusEnum.Connected;
         public string Message { get; set; }
 
-        public DateTime date { get; set; } = DateTime.Now;
+        public DateTime date { get; set; } = DateTime.UtcNow;
     }
 }

@@ -26,7 +26,7 @@ namespace VehicleAPI.Application.CommandHandlers
                 if (_vehicle != null)
                 {
                     _vehicle.VehicleStatusId = (short)request.ping.VehicleStatus;
-                    _vehicle.LastPing = DateTime.Now;
+                    _vehicle.LastPing = DateTime.UtcNow;
                     await _vehiclesRepository.UpdateAsync(_vehicle);
                 }
                 return _vehicle;

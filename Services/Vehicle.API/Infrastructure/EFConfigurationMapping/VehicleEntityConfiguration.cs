@@ -20,7 +20,7 @@ namespace VehicleAPI.Infrastructure.EFConfigurationMapping
 
 
             builder.Property(p => p.LastPing)
-            .HasColumnType("timestamp without time zone") 
+            .HasColumnType("timestamp with time zone") 
             .ValueGeneratedOnAdd();
         }
     }
