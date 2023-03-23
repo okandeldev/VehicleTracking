@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: customerdb
     ports:
-      - 54001:5432    
+      - 54321:5432    
     networks:
       - my-network
     volumes:
@@ -24,7 +24,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: vehicledb
     ports:
-      - 54002:5432    
+      - 54322:5432    
     networks:
       - my-network
     volumes:
