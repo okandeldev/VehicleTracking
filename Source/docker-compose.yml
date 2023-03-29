@@ -13,8 +13,8 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
-  customerapi:
-    image: ${DOCKER_REGISTRY-}customerapi
+  customersapi:
+    image: ${DOCKER_REGISTRY-}customersapi
     build:
       context: .
       dockerfile: Services/Customer.API/Dockerfile

@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "vehicleapi",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "apigateway": "StartDebugging",
+        "customerdb": "StartWithoutDebugging",
+        "customersapi": "StartDebugging",
+        "pingsimulator": "StartDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "trackingapi": "StartDebugging",
+        "trackingdb": "StartWithoutDebugging",
+        "vehicleapi": "StartDebugging",
+        "vehicledb": "StartWithoutDebugging",
+        "vehicletrackingui": "StartWithoutDebugging"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerdb-deployment
+  labels:
+    app: customerdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customerdb
+  template:
+    metadata:
+      labels:
+        app: customerdb
+    spec:
+      containers:
+        - name: customerdb
+          image: postgres
+          ports:
+            - containerPort: 5432
+          resources:
+            requests:
+              memory: "24Mi"
+              cpu: "100m"
+            limits:
+              memory: "48Mi"
+              cpu: "200m"
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: customerdb-secret
+                  key: customerdb-root-username        
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: customerdb-secret
+                  key: customerdb-root-password        
+            - name: POSTGRES_DB
+              value: customerdb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customerdb-service
+spec:
+  selector:
+    app: customerdb
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

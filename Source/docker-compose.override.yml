@@ -65,8 +65,8 @@ services:
     networks:
       - my-network
 
-  customerapi:
-    container_name: customerapi
+  customersapi:
+    container_name: customersapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - "ConnectionStrings:DefaultConnection=Server=customerdb;Database=customerdb;User Id=postgres;Password=postgres"
@@ -100,7 +100,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Docker
     depends_on:
       - vehicleapi
-      - customerapi
+      - customersapi
       - trackingapi
     ports:
       - "8003:80"
@@ -131,7 +131,7 @@ services:
       - "RemoteHosts:APIBaseUrl=http://apigateway/api"
     depends_on:
       - vehicleapi
-      - customerapi
+      - customersapi
       - trackingapi
       - apigateway    
     networks:
