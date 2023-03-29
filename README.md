@@ -96,7 +96,7 @@ Application is a set loosely coupled services that communicate to each other ove
     - **Technologies** :.Net Core, Postgres Database.
 - **Vehicles API:** is a service for Vehicles management. 
     - **Technologies** : .Net Core, Postgres Database.
-- **TrackingA API:** is a service for Tracking Vehicles, it receives Status of Vehicles and publish it to message Queue.Then the status is saved to Monogo DB and published to clients using SignalR. 
+- **TrackingA API:** is a service for Tracking Vehicles, it receives Status of Vehicles and publish it to Message Queue.Then Two Consumers are placed, One to save the Vehicles' status to DB and the other publish Status to clients using SignalR. 
     - **Technologies** : .Net Core, Mongo DB, rabbitmq and Swagger.
 - **Gateway API:** a  service where all calls to other service should come through. 
     - **Technologies** : .Net Core and Oclet.
@@ -128,17 +128,15 @@ Vehicle Monitoring Dashboard: [http://localhost:8004/home](http://localhost:8004
 
 #### API Documention
 
-- **Customer API:** [http://localhost:9092/swagger-ui.html](http://localhost:9092/swagger-ui.html 'http://localhost:9092/swagger-ui.html')
+- **Customer API:**  
   
-
 ![Reference Image](/images/CustomerAPI.png)
 
-- **Vehicle API:** [http://localhost:9091/swagger-ui.html](http://localhost:9091/swagger-ui.html 'http://localhost:9091/swagger-ui.html')
+- **Vehicle API:**  
 
-![Reference Image](/images/CustomerAPI.png)
+![Reference Image](/images/VehicleAPI.png)
 
-- **Tracking API:** [http://localhost:9093/swagger-ui.html](http://localhost:9093/swagger-ui.html 'http://localhost:9093/swagger-ui.html')
-
+- **Tracking API:**  
 
 ![Reference Image](/images/TrackingAPI.png)
 
